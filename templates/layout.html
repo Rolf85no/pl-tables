@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0" width="device-width">
+        <link href="static/styles.css" rel="stylesheet">
+        <title>Research {% block title %}{% endblock %} </title>
+
+    </head>
+
+    <body>
+        <nav>
+            <div class="logo"> <img src="static/Premier-League-logo-old.png"> </div>
+            <form id="myForm" action="/" method="post">
+            <ul class ="nav-links">
+                    <li>
+                    <select id="season" name="season">
+                        <option selected value = "{{ choose_season }}">Year: {{ choose_season| replace('.csv', '') }}</option>
+                        {% for season in seasons %}
+                        <option value = "{{ season }}">Year: {{ season| replace('.csv', '') }}</option>
+                        {% endfor %}
+                    </select>
+                </li>
+                <li>
+                    <select id="round" name="round">
+                        <option selected value ="{{ choose_round }}">Round: {{ choose_round }} </option>
+                        {% for i in range(42, 0, -1) %}
+                
+                        <option value= " {{ i }} ">Round: {{ i }} </option>
+                
+                        {% endfor %}
+                    </select>
+                </li>
+                <li><label for="Check standings">   </label>
+                    <input id="btn" type="button" value="Submit"> </li>
+            </ul>
+        </form>
+        
+        <script>
+            document.getElementById("btn").addEventListener("click", function() {
+            document.getElementById("myForm").submit();
+
+            });
+            </script>
+        
+
+            <div class="burger"> 
+               <div class="line1"></div>
+               <div class="line2"></div>
+               <div class="line3"></div>
+            </div>
+            
+            <script src="static/script.js"></script>
+        </nav>
+
+        <main>
+
+            {% block main %}{% endblock %}
+        </main>
+
+    </body>
+
+
+</html>
