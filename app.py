@@ -145,10 +145,10 @@ def make_season(rounds, pl_season):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        # Funker ikke enda
+        # Funker men gir en ny bug
         maxRound = 38
         season= request.form.get("season")
-        # Funker ikke enda
+        # Funker men gir en ny bug
         if season == "9293.csv" or season == "9394.csv" or season == "9495.csv":
             maxRound = 42
         round_pl = int(request.form.get("round"))

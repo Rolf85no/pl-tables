@@ -25,11 +25,16 @@
                 <li>
                     <select id="round" name="round">
                         <option selected value ="{{ choose_round }}">Round: {{ choose_round }} </option>
-                        {% for i in range(42, 0, -1) %}
-                
-                        <option value= " {{ i }} ">Round: {{ i }} </option>
-                
-                        {% endfor %}
+                        {% if maxRound == 42 %}
+                            {% for i in range( 42, 0, -1) %}
+                                <option value= " {{ i }} ">Round: {{ i }} </option>
+                            {% endfor %} 
+                        {% else %}
+                            {% for i in range( 38, 0, -1) %}
+                                <option value= " {{ i }} ">Round: {{ i }} </option>
+                            {% endfor %}        
+                        {% endif %}
+                        
                     </select>
                 </li>
                 <li><label for="Check standings">   </label>
