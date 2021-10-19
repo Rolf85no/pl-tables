@@ -17,7 +17,7 @@
                     <li>
                     <select id="season" name="season">
                         <option selected value = "{{ choose_season }}">Year: {{ choose_season| replace('.csv', '') }}</option>
-                        {% for season in seasons %}
+                        {% for season in seasons if not season == choose_season %}
                         <option value = "{{ season }}">Year: {{ season| replace('.csv', '') }}</option>
                         {% endfor %}
                     </select>
@@ -26,11 +26,11 @@
                     <select id="round" name="round">
                         <option selected value ="{{ choose_round }}">Round: {{ choose_round }} </option>
                         {% if maxRound == 42 %}
-                            {% for i in range( 42, 0, -1) %}
+                            {% for i in range( 42, 0, -1) if not i == choose_round %}
                                 <option value= " {{ i }} ">Round: {{ i }} </option>
                             {% endfor %} 
                         {% else %}
-                            {% for i in range( 38, 0, -1) %}
+                            {% for i in range( 38, 0, -1) if not i == choose_round %}
                                 <option value= " {{ i }} ">Round: {{ i }} </option>
                             {% endfor %}        
                         {% endif %}
@@ -41,13 +41,14 @@
                     <input id="btn" type="button" value="Submit"> </li>
             </ul>
         </form>
+
         
         <script>
             document.getElementById("btn").addEventListener("click", function() {
             document.getElementById("myForm").submit();
 
             });
-            </script>
+            </script>          
         
 
             <div class="burger"> 
@@ -65,6 +66,5 @@
         </main>
 
     </body>
-
 
 </html>

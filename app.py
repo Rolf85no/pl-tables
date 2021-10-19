@@ -158,6 +158,7 @@ def index():
     else:
         season = "9293.csv" 
         round_pl = 42
+        maxRound = 42
         full_table = make_season(round_pl, season)
-        return render_template("index.html", tables=[full_table.to_html(classes='data', header="true")], seasons=SEASONS, choose_season=season, choose_round=round_pl)
+        return render_template("index.html", tables=[full_table.to_html(classes='data', header="true")], seasons=SEASONS, choose_season=season, choose_round=round_pl, maxRound=maxRound)
 

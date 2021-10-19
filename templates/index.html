@@ -1,9 +1,10 @@
 {% extends "layout.html" %}{% block title %} Home {% endblock %}
 {% block main %}
 
-
 {% for table in tables %}
             {{ table|safe }}
 {% endfor %}
+ 
+
 
 {% endblock %}
