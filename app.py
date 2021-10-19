@@ -145,10 +145,15 @@ def make_season(rounds, pl_season):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        # Funker ikke enda
+        maxRound = 38
         season= request.form.get("season")
+        # Funker ikke enda
+        if season == "9293.csv" or season == "9394.csv" or season == "9495.csv":
+            maxRound = 42
         round_pl = int(request.form.get("round"))
         full_table = make_season(round_pl, season)
-        return render_template("index.html", tables=[full_table.to_html(classes='data', header="true")], seasons=SEASONS, choose_season=season, choose_round=round_pl)
+        return render_template("index.html", tables=[full_table.to_html(classes='data', header="true")], seasons=SEASONS, choose_season=season, choose_round=round_pl, maxRound=maxRound)
 
     else:
         season = "9293.csv" 
